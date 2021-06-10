@@ -1,0 +1,154 @@
+$back-pri: rgb(32, 32, 32);
+$back-sec: rgb(253, 22, 22);
+$fontColor: rgb(241, 241, 241);
+$fontSec: rgb(192, 88, 88);
+
+$margin-small: 30px 50px;
+$margin-big: 50px;
+$padding-small: 20px 50px;
+$padding-big: 50px;
+
+$extraMedium: 1050px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+
+$h1: 40px;
+$h2: 25px;
+
+
+.schedule{
+    position: relative;
+    padding: 100px 0;
+    @media screen and (max-width: $small) {
+        padding: 50px 30px;
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        background-image: url('https://cdn.pixabay.com/photo/2014/12/03/19/05/boxing-555735_960_720.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+    .schedule-container{
+        background-color: $back-pri;
+        width: 70%;
+        padding: 50px;
+        margin: 100px auto;
+        @media screen and (max-width: $small) {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .back-btn{
+            display: inline-block;
+            font-size: 22px;
+            text-decoration: none;
+            margin: 50px;
+            color: $back-sec;
+            position: relative;
+
+            &::after{
+                content: '';
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border-left: 1px solid $back-sec;
+                border-bottom: 1px solid $back-sec;
+                top: 12px;
+                left: -20px;
+                transform: rotate(45deg);
+            }
+        }
+
+        h2{
+            font-size: $h2;
+            font-weight: 500;
+            margin-bottom: 50px;
+        }
+
+        .time-Zone{
+            display: block;
+            margin-bottom: 20px;
+            @media screen and (max-width: $extraMedium) {
+                display: none;
+            }
+
+            .time-link{
+                margin-left: 10px;
+                color: $back-sec;
+                font-size: 15px;
+            }
+        }
+
+        .discription{
+            display: flex;
+            @media screen and (max-width: $extraMedium) {
+                flex-direction: column;
+            }
+
+            .calendar{
+                flex: 3;
+                @media screen and (max-width: $extraMedium) {
+                    margin-bottom: 30px;
+                }
+            }
+
+            .table-content{
+                .content{
+                    border: 1px solid $back-sec;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    min-width: 230px;
+                    max-width: 300px;
+                    @media screen and (max-width: $small) {
+                        min-width: auto;
+                    }
+                    h3{
+                        margin-bottom: 20px;
+                        font-size: 22px;
+                        font-weight: 500;
+                    }
+
+                    span{
+                        display: block;
+                        margin-bottom: 20px;
+                    }
+
+                    .next-btn{
+                        width: 100%;
+                        background-color: $back-sec;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 10px 0;
+                        text-decoration: none;
+                        color: $fontColor;
+                        font-size: 20px;
+                        font-weight: 500;
+                        margin-bottom: 20px;
+                        border: none;
+                    }
+                    .warning{
+                        color: $back-sec;
+                        display: none;
+
+                        &.active{
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

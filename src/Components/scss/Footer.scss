@@ -1,0 +1,27 @@
+$back-pri: rgb(32, 32, 32);
+$back-sec: rgb(253, 22, 22);
+$fontColor: #f1f1f1;
+$fontSec: rgb(192, 88, 88);
+
+$margin-small: 30px 50px;
+$margin-big: 50px;
+$padding-small: 20px 50px;
+$padding-big: 50px;
+
+$extraMedium: 1050px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+
+$h1: 40px;
+$h2: 25px;
+
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+    background-color: $back-pri;
+}

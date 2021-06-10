@@ -1,13 +1,41 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap');
+:root{
+  --back-pri: rgb(32, 32, 32);
+  --back-sec: rgb(253, 22, 22);
+  --fontColor: rgb(241, 241, 241);
+  --fontSec: rgb(192, 88, 88);
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.dark-theme {
+  --back-pri: #282c35;
+  --fontColor: #fff;
+  --back-sec: rgba(109, 2, 57, 0.876);
+}
+.light-theme {
+  --back-pri: rgba(255, 255, 255, 1);
+  --fontColor: #282c35;
+  --back-sec: rgb(255, 224, 240);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--fontColor);
+  line-height: 1.4;
+  font-size: 18px;
+  font-weight: 300;
+  width: 100vw;
+  background-color: var(--back-pri);
+  width: calc(100vw - (100vw - 100%));
 }

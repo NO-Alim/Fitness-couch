@@ -1,0 +1,195 @@
+$back-pri: #202020;
+$back-sec: #fd1616;
+$fontColor: rgb(241, 241, 241);
+$fontSec: #c05858;
+
+$margin-small: 30px 50px;
+$margin-big: 50px;
+$padding-small: 20px 50px;
+$padding-big: 50px;
+
+$extraMedium: 1100px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+
+
+
+nav{
+    background: $fontColor;
+    color: $back-pri;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $padding-small;
+    overflow: hidden;
+
+
+    .nav-links-container{
+        flex: 30%;
+        transition: all 0.3s ease-in-out;
+        .menu-holder{
+            display: none;
+        }
+        @media screen and (max-width: $extraMedium) {
+            flex: 50%;
+        }
+        @media screen and (max-width: $medium) {
+            //display: none;
+
+            position: fixed;
+            background-color: $fontColor;
+            width: 50%;
+            min-height: 100vh;
+            top: 0;
+            left: -100%;
+            padding: 30px 50px;
+            transition: all 0.3 ease-in-out;
+
+            &.toggle{
+                left: 0;
+                transition: all 0.3s ease-in-out;
+            }
+            
+            .menu-holder{
+                display: block;
+                .menu-container{
+                    display: flex;
+                    width: 30px;
+                    margin-left: auto;
+
+                    &.active .menu:first-child{
+                        transform: rotate(-45deg) translate(-9px, 4px);
+                    }
+                    &.active .menu:nth-child(2){
+                        opacity: 0;
+                    }
+                    &.active .menu:last-child{
+                        transform: rotate(45deg) translate(-8px, -5px);
+                    }
+                }
+            }
+            
+
+            // .nav-links{
+            //     @media screen and (max-width: $medium){
+            //         flex-direction: column;
+            //         li{
+            //             margin: 20px 0;
+            //         }
+            //     }
+                
+            // }
+        }
+        @media screen and (max-width: $small){
+            width: 100%;
+        }
+        
+
+        .nav-links{
+            flex: 1;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            @media screen and (max-width: $medium){
+                flex-direction: column;
+            }
+
+            li{
+                @media screen and (max-width: $medium){
+                    margin: 20px 0;
+                }
+            }
+
+            .link{
+                text-decoration: none;
+                color: $back-pri;
+                font-weight: 500;
+                z-index: 1;
+                transition: all 0.3s ease-in-out;
+                // &.active{
+                //     color: yellow;
+                // }
+                &:hover{
+                    color: $back-sec;
+                
+                }
+            }
+        }
+    }
+
+    .menu-container{
+        display: none;
+        transition: all 0.3s ease-in-out;
+        
+        @media screen and (max-width: $medium) {
+            flex: 20%;
+            display: flex;
+            flex-direction: column;
+            width: 30px;
+            .menus{
+                width: 35px;
+                display: flex;
+                flex-direction: column;
+            }
+            .menu{
+                background: $back-pri;
+                width: 30px;
+                height: 3px;
+                margin: 3px 0;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+        
+    }
+
+    .social-container{
+        flex: 20%;
+        display: flex;
+
+
+        .sign-up-container{
+            flex: 1;
+            text-align: end;
+            margin-right: 30px;
+            @media screen and (max-width: $medium) {
+                display: none;
+            }
+
+            .sign-up-btn{
+                text-decoration: none;
+                color: $back-sec;
+            }
+
+            .user-icon{
+                margin-right: 10px;
+            }
+        }
+
+        .social-media-container{
+            flex: 1;
+            ul{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                list-style-type: none;
+
+                .media-link{
+                    color: $back-pri;
+                    transition: all 0.3s ease-in-out;
+                &:hover{
+                    color: $back-sec;
+                }
+                }
+            }
+        }
+    }
+}
+
+
+.side-content{
+    &.active-link{
+        border-bottom: 2px solid black;
+    }
+}

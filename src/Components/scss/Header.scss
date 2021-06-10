@@ -1,0 +1,105 @@
+$back-pri: rgb(32, 32, 32);
+$back-sec: rgb(253, 22, 22);
+$fontColor: rgb(241, 241, 241);
+$fontSec: rgb(192, 88, 88);
+
+$margin-small: 30px 50px;
+$margin-big: 50px;
+$padding-small: 20px 50px;
+$padding-big: 50px;
+
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+
+$h1: 30px;
+$h2: 25px;
+
+
+.header{
+    overflow: hidden;
+    width: calc(100vw - (100vw - 100%));
+    position: relative;
+
+    .back-vid{
+        position: absolute;
+        min-width: 100%;
+        min-height: 100%;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        background: rgba(0, 0, 0, 1);
+        opacity: 0.2;
+    }
+    .header-content{
+        width: 50vw;
+        margin: 150px 200px;
+        @media screen and (max-width: $semiMedium) {
+            width: 100%;
+            margin: 100px 100px;
+        }
+        @media screen and (max-width: $small) {
+            width: 100%;
+            margin: 100px 50px;
+        }
+
+        @media screen and (max-width: $extraSmall) {
+            width: 100%;
+            margin: 100px 30px;
+        }
+        .heading{
+            font-size: 70px;
+            font-weight: bold;
+            line-height: 70px;
+            letter-spacing: 5px;
+
+            @media screen and (max-width: $extraSmall) {
+                font-size: 50px;
+                line-height: 50px;
+            }
+        }
+
+        h2{
+            margin: 50px 0;
+            @media screen and (max-width: $semiMedium) {
+                width: 90%;
+            }
+        }
+
+        .button-group{
+            display: flex;
+            @media screen and (max-width: $extraSmall) {
+                flex-direction: column;
+            }
+            .btn{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                width: 200px;
+                height: 50px;
+                background: transparent;
+                color: $fontColor;
+                font-weight: 500;
+                margin-right: 20px;
+                border: 1px solid $back-sec;
+                transition: all 0.3s ease-in-out;
+                &:hover{
+                background: $back-sec;
+                }
+                &.active{
+                background: $back-sec;
+                }
+
+                @media screen and (max-width: $small) {
+                    width: 150px;
+                }
+
+                @media screen and (max-width: $extraSmall) {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}

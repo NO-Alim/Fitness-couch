@@ -1,0 +1,86 @@
+$back-pri: rgb(32, 32, 32);
+$back-sec: rgb(253, 22, 22);
+$fontColor: rgb(241, 241, 241);
+$fontSec: rgb(192, 88, 88);
+
+$margin-small: 30px 50px;
+$margin-big: 50px;
+$padding-small: 20px 50px;
+$padding-big: 50px;
+
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+
+$h1: 40px;
+$h2: 25px;
+
+
+// @media screen and (max-width: $small) {
+//     padding: 50px 30px;
+// }
+
+.Stories-container{
+    display: flex;
+
+        @media screen and (max-width: $medium) {
+            flex-direction: column;
+        }
+
+    .img-container{
+        flex: 50%;
+        overflow: hidden;
+        position: relative;
+        h1{
+            display: none;
+            @media screen and (max-width: $medium) {
+                display: block;
+                position: absolute;
+                font-size: $h1;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 100%;
+                text-align: center;
+            }
+        }
+        .parallax{
+            height: 100%;
+        }
+        .img-content{
+            height: 500px;
+        }
+    }
+    .stories{
+        flex: 50%;
+        background: $back-sec;
+        padding: 100px 50px;
+
+        h1{
+            font-size: $h1;
+            margin-bottom: 30px;
+            display: block;
+            text-align: center;
+            @media screen and (max-width: $medium) {
+                display: none;
+            }
+        }
+
+        .story{
+            text-align: center;
+            margin-bottom: 30px;
+
+            h2{
+                font-size: $h2;
+            }
+            h3{
+                font-size: 16px;
+                margin: 10px 0;
+            }
+            span{
+                letter-spacing: 1px;
+            }
+        }
+    }
+}

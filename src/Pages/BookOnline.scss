@@ -1,0 +1,140 @@
+$back-pri: rgb(32, 32, 32);
+$back-sec: rgb(253, 22, 22);
+$fontColor: rgb(241, 241, 241);
+$fontSec: rgb(192, 88, 88);
+
+$margin-small: 30px 50px;
+$margin-big: 50px;
+$padding-small: 20px 50px;
+$padding-big: 50px;
+
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+
+$h1: 40px;
+$h2: 25px;
+
+
+.bookOnline{
+    position: relative;
+    text-align: center;
+    padding: 100px 0;
+
+    h1{
+        font-size: $h1;
+        margin-bottom: 50px;
+        padding: 0 20px;
+    }
+
+    p{
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 50px;
+        @media screen and (max-width: $small) {
+            width: 90%;
+        }
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        background-image: url('https://cdn.pixabay.com/photo/2017/04/27/08/29/man-2264825_960_720.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+    .table-container{
+        width: 70%;
+        margin: 0 auto;
+        background-color: $back-pri;
+        padding: 20px;
+
+        @media screen and (max-width: $semiMedium) {
+            background-color: transparent;
+        }
+        @media screen and (max-width: $small) {
+            width: 90%;
+        }
+
+
+        .btn-group{
+            padding: 20px 0;
+            display: inline-block;
+            span{
+                padding: 10px 20px;
+                font-size: 20px;
+                font-weight: 500;
+                border-bottom: 3px solid $fontColor;
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
+                @media screen and (max-width: $semiMedium) {
+                    display: block;
+                    margin-bottom: 20px;
+                }
+            }
+
+            span.active{
+                border-color: $back-sec;
+            }
+
+        }
+    }
+    table{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 auto;
+        border-bottom: 1px solid $back-sec;
+
+        @media screen and (max-width: $semiMedium) {
+            flex-direction: column;
+            border: 1px solid $back-sec;
+            margin-bottom: 40px;
+            padding: 10px 0;
+            background-color: $back-pri;
+        }
+
+        td{
+            flex: 1;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+
+            @media screen and (max-width: $semiMedium) {
+                margin: 10px 0;
+                padding: 10px 0;
+            }
+        }
+
+        .name{
+            font-size: 21px;
+            font-weight: 400;
+        }
+        .duration{
+            font-weight: 400;
+        }
+
+        .link-btn{
+            display: flex;
+            justify-content: center;
+        }
+        .btn{
+            text-decoration: none;
+            color: $fontColor;
+            width: 100px;
+            height: 40px;
+            background-color: $back-sec;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

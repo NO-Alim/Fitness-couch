@@ -1,0 +1,181 @@
+$back-pri: rgb(32, 32, 32);
+$back-sec: rgb(253, 22, 22);
+$fontColor: rgb(241, 241, 241);
+$fontSec: rgb(192, 88, 88);
+
+
+$margin-small: 30px 50px;
+$margin-big: 50px;
+$padding-small: 20px 50px;
+$padding-big: 50px;
+
+$extraMedium: 1100px;
+$mdmd: 1000px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+
+$h1: 40px;
+$h2: 25px;
+
+
+.contact-container{
+    display: flex;
+    padding: 100px 150px;
+    background: $back-pri;
+    @media screen and (max-width: $extraMedium) {
+        padding: 100px;
+    }
+
+    @media screen and (max-width: $medium) {
+        flex-direction: column;
+        padding: 100px 50px;
+    }
+
+
+    h1{
+        font-size: $h1;
+    }
+    .left{
+        flex: 1;
+        padding: 0 50px;
+        @media screen and (max-width: $medium) {
+            margin-bottom: 50px;
+        }
+
+        @media screen and (max-width: $small) {
+            padding: 0;
+        }
+
+        h3{
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-ads{
+            margin-bottom: 30px;
+        }
+
+        .social-media{
+            width: 70%;
+            font-size: 40px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            @media screen and (max-width: $mdmd) {
+                width: 80%;
+            }
+
+            @media screen and (max-width: $medium) {
+                width: 70%;
+            }
+
+            @media screen and (max-width: $semiMedium) {
+                width: 100%;
+            }
+            
+            .media-icon{
+                display: block;
+                color: $fontColor;
+                transform: scale(0.9);
+                transition: all 0.3s ease-in-out;
+
+                &:hover{
+                    transform: scale(1);
+                    color: $back-sec;
+                }
+            }
+        }
+    }
+
+    .right{
+        flex: 1;
+        padding: 0 30px;
+        @media screen and (max-width: $medium) {
+            padding: 0 50px; 
+        }
+
+        @media screen and (max-width: $small) {
+            padding: 0;
+        }
+
+        h1{
+            margin-bottom: 50px;
+
+            @media screen and (max-width: $medium) {
+                margin-bottom: 20px;
+            }
+        }
+
+        label{
+            display: block;
+        }
+        input,
+        textarea{
+            display: block;
+            font-size: 18px;
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            background: transparent;
+            border: 1px solid $fontColor;
+            width: 70%;
+            resize: none;
+            color: $fontColor;
+            transition: all 0.3s ease-in-out;
+
+            &:focus{
+                background: $back-sec;
+                outline: none;
+            }
+
+            @media screen and (max-width: $mdmd) {
+                width: 80%;
+            }
+            @media screen and (max-width: $medium) {
+                width: 70%;
+            }
+            @media screen and (max-width: $semiMedium) {
+                width: 100%;
+            }
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        textarea{
+            height: 100px;
+        }
+
+        .btn-container{
+            width: 70%;
+            display: block;
+            text-align: right;
+
+            @media screen and (max-width: $mdmd) {
+                width: 80%;
+            }
+            @media screen and (max-width: $medium) {
+                width: 70%;
+            }
+            @media screen and (max-width: $semiMedium) {
+                width: 100%;
+            }
+
+            button{
+                font-size: 18px;
+                padding: 8px 15px;
+                background: $back-sec;
+                color: $fontColor;
+                border: none;
+                cursor: pointer;
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+    }
+}

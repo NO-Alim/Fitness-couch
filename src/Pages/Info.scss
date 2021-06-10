@@ -1,0 +1,215 @@
+$back-pri: rgb(32, 32, 32);
+$back-sec: rgb(253, 22, 22);
+$fontColor: #f1f1f1;
+$fontSec: rgb(192, 88, 88);
+
+$margin-small: 30px 50px;
+$margin-big: 50px;
+$padding-small: 20px 50px;
+$padding-big: 50px;
+
+$extraMedium: 1050px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+
+$h1: 40px;
+$h2: 25px;
+
+
+.info-container{
+    position: relative;
+    padding: 100px 0;
+    @media screen and (max-width: $small) {
+        padding: 50px 30px;
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        background-image: url('https://cdn.pixabay.com/photo/2015/11/16/01/21/kettlebell-1045067_960_720.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+    .info{
+        background-color: $back-pri;
+        width: 70%;
+        padding: 50px;
+        margin: 100px auto;
+        @media screen and (max-width: $small) {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .back-btn{
+            display: inline-block;
+            font-size: 22px;
+            text-decoration: none;
+            margin: 50px;
+            color: $back-sec;
+            position: relative;
+
+            &::after{
+                content: '';
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border-left: 1px solid $back-sec;
+                border-bottom: 1px solid $back-sec;
+                top: 12px;
+                left: -20px;
+                transform: rotate(45deg);
+            }
+        }
+        h2{
+            font-size: $h2;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        h3{
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 50px;
+
+        }
+
+        .flex-container{
+            display: flex;
+            @media screen and (max-width: $extraMedium) {
+                flex-direction: column;
+            }
+
+            .from-container{
+                flex: 3;
+                @media screen and (max-width: $extraMedium) {
+                    margin-bottom: 30px;
+                }
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    padding-right: 50px;
+                    @media screen and (max-width: $extraMedium) {
+                        padding-right: 0;;
+                    }
+                    label{
+                        margin-bottom: 10px;
+                    }
+
+                    input,
+                    textarea{
+                        padding: 10px;
+                        background: transparent;
+                        border: 1px solid $fontColor;
+                        margin-bottom: 20px;
+                        resize: none;
+                        color: $fontColor;
+                        font-size: 18px;
+                        transition: all ease-in-out 0.3s;
+
+                        &:focus{
+                            background: $back-sec;
+                            outline: none;
+                        }
+                    }
+                    input::-webkit-outer-spin-button,
+                    input::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+
+                    .required-name,
+                    .required-email{
+                        margin-bottom: 10px;
+                        color: $back-sec;
+                        display: none;
+                    }
+                }
+            }
+            .submit-container{
+                flex: 2;
+                .Next-btn{
+                    text-decoration: none;
+                }
+                .submit-content{
+                    border: 1px solid $back-sec;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    min-width: 230px;
+                    max-width: 300px;
+                    @media screen and (max-width: $extraMedium) {
+                        max-width: 100%;
+                    }
+                    @media screen and (max-width: $small) {
+                        min-width: auto;
+                   }
+
+                   h3{
+                       margin-bottom: 20px;
+                   }
+
+                   hr{
+                       margin: 15px 0;
+                   }
+
+                   .coupon{
+                       font-size: 15px;
+                       margin-bottom: 10px;
+                       cursor: pointer;
+                   }
+                   input{
+                    padding: 10px;
+                    background: transparent;
+                    border: 1px solid $fontColor;
+                    margin-bottom: 20px;
+                    resize: none;
+                    color: $fontColor;
+                    font-size: 18px;
+                    transition: all ease-in-out 0.3s;
+                    width: 100%;
+                    display: none;
+                    &:focus{
+                        background: $back-sec;
+                        outline: none;
+                    }
+                    &.active{
+                        display: block;
+                    }
+                   }
+
+
+                   button{
+                    width: 100%;
+                    background-color: $back-sec;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 10px 0;
+                    text-decoration: none;
+                    color: $fontColor;
+                    font-size: 20px;
+                    font-weight: 500;
+                    border: none;
+                   }
+
+                   .warning{
+                       display: block;
+                       margin: 10px 0;
+                       color: $back-sec;
+                       display: none;
+                   }
+                }
+            }
+        }
+
+    }
+}
