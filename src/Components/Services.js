@@ -1,13 +1,30 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './scss/Services.scss'
 import Fade from 'react-reveal/Fade'
 import Zoom from 'react-reveal/Zoom'
+import { useGlobalContext } from '../Context/context'
 
 const Services = () => {
+    const{setServiceTop} = useGlobalContext();
+    const serviceRef = useRef(null);
+    const scrollHandler = () => {
+        var top = serviceRef.current.offsetTop;
+        var bottom = serviceRef.current.clientHeight + top;
+        setServiceTop({top: top, bottom: bottom});
+      };
+      
+      useEffect(() => {
+        window.addEventListener("scroll", scrollHandler, true);
+        return () => {
+            window.removeEventListener("scroll", scrollHandler, true);
+          };
+      },[]);
+
+    console.log();
     return (
         <>
-            <div className="services-container" id="services">
+            <div className="services-container" id="services" ref={serviceRef}>
                 <Fade top>
                 <h1>CHOOSE YOUR <br /> ONLINE WORKOUT</h1>
                 </Fade>

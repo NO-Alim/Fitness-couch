@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import './Home.scss'
 import Header from '../Components/Header'
 import About from '../Components/About'
@@ -8,7 +8,9 @@ import Contact from '../Components/Contact'
 import Fade from 'react-reveal/Fade'
 import {Element} from 'react-scroll'
 
+
 const Home = () => {
+
     return (
         <>
             <div className="home">

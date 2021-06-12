@@ -6,6 +6,7 @@ import {useGlobalContext} from '../Context/context'
 
 
 const Info = () => {
+    window.scrollTo( 0 , 0);
     const {table,startDate, isClicked, sheduleId,setInfo} = useGlobalContext();
     const [codeActive, setCodeActive] = useState(false)
     const [nextPage, setNextPage] = useState(false);

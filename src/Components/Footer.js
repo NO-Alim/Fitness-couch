@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <>
             <footer>
-                <h3>This is footer Section</h3>
+                <p>© 2023 by MICHAEL RYAN. Proudly created by Abdul Alim.</p>
             </footer>
             
         </>

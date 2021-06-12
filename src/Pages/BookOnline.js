@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 
 
 const BookOnline = () => {
+    window.scrollTo( 0 , 0);
     const {data, dataTwo, table, setTable, setActive, setStartDate} = useGlobalContext();
 
     const [catagory, setCatagory] = useState('class')

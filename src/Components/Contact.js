@@ -1,14 +1,31 @@
-import React from 'react'
+import React,{useRef, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { FaUserAlt,FaFacebookF,FaInstagram,FaTwitter,FaYoutube } from 'react-icons/fa';
 import './scss/Contact.scss'
 import Fade from 'react-reveal/Fade'
 import Zoom from 'react-reveal/Zoom'
+import { useGlobalContext } from '../Context/context';
 
 const Contact = () => {
+    const {setContactTop} = useGlobalContext();
+    const contactRef = useRef(null);
+    const scrollHandler = () => {
+        var top = contactRef.current.offsetTop;
+        var bottom = contactRef.current.clientHeight + top;
+        setContactTop({top: top, bottom: bottom});
+      };
+      
+      useEffect(() => {
+        window.addEventListener("scroll", scrollHandler, true);
+        return () => {
+            window.removeEventListener("scroll", scrollHandler, true);
+          };
+      },[]);
+
+
     return (
         <>
-            <div className="contact-container" id="contact">
+            <div className="contact-container" id="contact" ref={contactRef}>
                 <div className="left">
                     <Fade top>
                     <h1>MICHAEL RYAN</h1>

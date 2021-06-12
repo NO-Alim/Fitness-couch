@@ -10,6 +10,7 @@ import { render } from '@testing-library/react';
 
 
 const Schedule = () => {
+    window.scrollTo( 0 , 0);
     const {table, startDate, setStartDate, isClicked, SetIsClicked, warning, SetWarning, setSheduleId, sheduleId,setDate} = useGlobalContext();
     const { id } = useParams();
 

@@ -1,15 +1,29 @@
-import React from 'react'
+import React,{useEffect,useRef} from 'react'
 import  './scss/About.scss'
 import { Parallax } from 'react-parallax';
 import Fade from 'react-reveal/Fade'
+import { useGlobalContext } from '../Context/context';
 
 const image1 = "https://cdn.pixabay.com/photo/2017/09/27/18/49/sport-2792995_960_720.jpg"
 
 
 const About = () => {
+    const{setAboutTop} = useGlobalContext();
+    const aboutRef = useRef(null);
+    const scrollHandler = () => {
+        var top = aboutRef.current.offsetTop;
+        var bottom = aboutRef.current.clientHeight + top;
+        setAboutTop({top: top, bottom: bottom});
+      };
+      useEffect(() => {
+        window.addEventListener("scroll", scrollHandler, true);
+        return () => {
+            window.removeEventListener("scroll", scrollHandler, true);
+          };
+      },[]);
     return (
         <>
-            <div className="about" id="about">
+            <div className="about" id="about" ref={aboutRef}>
                 <div className="img-container">
                 <Parallax bgImage={image1} strength={300} className="parallax">
                     <div className="img-content"></div>

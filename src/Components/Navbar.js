@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState } from 'react'
-import {Link, useLocation} from 'react-router-dom'
+import {Link, useLocation, NavLink } from 'react-router-dom'
 import { FaUserAlt,FaFacebookF,FaInstagram,FaTwitter,FaYoutube } from 'react-icons/fa';
 import  './scss/Navbar.scss'
 import Headroom from 'react-headroom'
@@ -7,12 +7,24 @@ import Fade from 'react-reveal/Fade'
 //for scroll link
 //import {Link as ScrollLink} from 'react-scroll'
 import {NavHashLink} from 'react-router-hash-link'
+import { useScrollPosition } from 'react-use-scroll-position'
+import Home from '../Pages/Home';
+import { useGlobalContext } from '../Context/context';
+
 
 const Navbar = () => {
+    const {serviceTop, aboutTop, contactTop} = useGlobalContext();
+
     const [toggleNav, setToggleNav] = useState(false);
+    const [home, setHome] = useState(true)
+    const [service, setService] = useState(false);
+    const [about, setAbout] = useState(false);
+    const [contact, setContact] = useState(false);
+
     const navRef = useRef(null)
     let location = useLocation();
 
+    
 
     const toggleClick = () => {
         setToggleNav(!toggleNav)
@@ -30,6 +42,33 @@ const Navbar = () => {
     const handleToggle = () => {
         setToggleNav(false)
     }
+    const {y} = useScrollPosition();
+
+    useEffect(() => {
+        if ( y < aboutTop.top && location.pathname == "/") {
+            setHome(true)
+        } else {
+            setHome(false)
+        }
+        if (y > aboutTop.top && y < aboutTop.bottom && location.pathname == "/") {
+            setAbout(true)
+        } else{
+            setAbout(false)
+        }
+        if (y > serviceTop.top && y <  serviceTop.bottom && location.pathname == "/") {
+            setService(true);
+        } else {
+            setService(false);
+        }
+        if (y > contactTop.top && y < contactTop.bottom && location.pathname == "/") {
+            setContact(true)
+        } else{
+            setContact(false)
+        }
+        
+    },[window.scrollY])
+
+
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
         document.addEventListener('click', handleClick)
@@ -38,6 +77,9 @@ const Navbar = () => {
             document.removeEventListener('click',handleClick)
         }
     })
+
+    
+    
     return (
         <>
             <Headroom >
@@ -56,7 +98,7 @@ const Navbar = () => {
                                     <Fade left>
                                         <li>
                                         {/* <ScrollLink  activeClass="active" to="Header" spy={true} smooth={true} offset={0} duration={500} className="side-content"> */}
-                                            <NavHashLink smooth  to="/#header" activeStyle={{ color: 'red' }} className="link" onClick={handleToggle}>Home</NavHashLink>
+                                            <NavHashLink smooth  to="/#header" className={`link ${home ? 'red': null}`} onClick={handleToggle}>Home</NavHashLink>
                                         {/* </ScrollLink> */}
                                         </li>
                                     </Fade>
@@ -65,13 +107,13 @@ const Navbar = () => {
                             <Fade left>
                                 <Fade left>
                                     <li>
-                                        <NavHashLink smooth to="/#about" activeStyle={{ color: 'red' }} className="link" onClick={handleToggle}>About</NavHashLink>
+                                        <NavHashLink smooth to="/#about" className={`link ${about ? 'red': null}`} onClick={handleToggle}>About</NavHashLink>
                                     </li>
                                 </Fade>
                             </Fade>
                             <Fade left>
                             <li>
-                                <NavHashLink smooth to="/#services" activeStyle={{ color: 'red' }} className="link" onClick={handleToggle}>Services</NavHashLink>
+                                <NavHashLink smooth to="/#services" className={`link ${service ? 'red': null}`} onClick={handleToggle}>Services</NavHashLink>
                             </li>
                             </Fade>
                             <Fade right>
@@ -82,7 +124,7 @@ const Navbar = () => {
                             <Fade right>
                                 <Fade right>
                                     <li>
-                                        <Link to="/plans" className="link" onClick={handleToggle}>Plan & Pricing</Link>
+                                        <Link to="/plans" className="link" onClick={handleToggle} >Plan & Pricing</Link>
                                     </li>
                                 </Fade>
                             </Fade>
@@ -90,7 +132,7 @@ const Navbar = () => {
                                 <Fade right>
                                     <Fade right>
                                         <li>
-                                            <NavHashLink smooth to="/#contact" activeStyle={{ color: 'red' }} className="link" onClick={handleToggle}>Contact</NavHashLink>
+                                            <NavHashLink smooth to="/#contact" className={`link ${contact ? 'red': null}`} onClick={handleToggle}>Contact</NavHashLink>
                                         </li>
                                     </Fade>
                                 </Fade>

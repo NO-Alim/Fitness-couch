@@ -5,8 +5,8 @@ import Fade from 'react-reveal/Fade'
 
 
 const image1 = "https://cdn.pixabay.com/photo/2019/08/28/14/58/body-4436985_960_720.jpg"
-
 const Stories = () => {
+    
     return (
         <>
             <div className="Stories-container">
