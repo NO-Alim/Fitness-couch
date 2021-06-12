@@ -10,11 +10,13 @@ import Info from './Pages/Info'
 import PlanAndPricing from './Pages/PlanAndPricing'
 import Schedule from './Pages/Schedule'
 import SinglePlan from './Pages/SinglePlan'
+import ScrollToTop from './ScrollToTop'
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <ScrollToTop />
       <Switch>
         <Route exact path="/">
           <Home />

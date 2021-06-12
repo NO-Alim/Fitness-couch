@@ -1,0 +1,50 @@
+$back-pri: rgb(32, 32, 32);
+$back-sec: rgb(253, 22, 22);
+$fontColor: #f1f1f1;
+$fontSec: rgb(192, 88, 88);
+
+$margin-small: 30px 50px;
+$margin-big: 50px;
+$padding-small: 20px 50px;
+$padding-big: 50px;
+
+$extraMedium: 1050px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+
+$h1: 40px;
+$h2: 25px;
+
+.error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+    h1{
+        color: $back-sec;
+        font-size: $h1;
+    }
+    h4{
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .home-btn{
+        text-decoration: none;
+        font-size: 18px;
+        color: $fontColor;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $back-sec;
+        margin-top: 20px;
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+    }
+}

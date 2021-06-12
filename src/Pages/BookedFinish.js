@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import {useGlobalContext} from '../Context/context'
 import './Booked.scss'
 const BookedFinish = () => {
-    const {table,sheduleId,date,info} = useGlobalContext();
+    const {table,sheduleId,date,info,name,email} = useGlobalContext();
 
 
     const filterItem = table.filter(item => item.id == sheduleId);
@@ -14,8 +14,8 @@ const BookedFinish = () => {
         <>
             <article className="Booked-container">
                 <div className="booked">
-                    <h2>Great, Your're Booked!</h2>
-                    <p>A confirmation email is on its way to you.</p>
+                    <h2>Great {name}, Your're Booked!</h2>
+                    <p>A confirmation email is on its way to your '{email}'.</p>
                     {filterItem.map((item,ind) => {
                         const {name,duration,price} = item;
                         return (

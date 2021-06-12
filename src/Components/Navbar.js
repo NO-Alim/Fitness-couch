@@ -16,7 +16,7 @@ const Navbar = () => {
     const {serviceTop, aboutTop, contactTop} = useGlobalContext();
 
     const [toggleNav, setToggleNav] = useState(false);
-    const [home, setHome] = useState(true)
+    const [home, setHome] = useState(false)
     const [service, setService] = useState(false);
     const [about, setAbout] = useState(false);
     const [contact, setContact] = useState(false);
@@ -118,13 +118,13 @@ const Navbar = () => {
                             </Fade>
                             <Fade right>
                                 <li>
-                                    <Link to="/bookOnline" className="link" onClick={handleToggle}>Book Online</Link>
+                                    <NavLink to="/bookOnline" className="link" activeClassName="red" onClick={handleToggle}>Book Online</NavLink>
                                 </li>
                             </Fade>
                             <Fade right>
                                 <Fade right>
                                     <li>
-                                        <Link to="/plans" className="link" onClick={handleToggle} >Plan & Pricing</Link>
+                                        <NavLink to="/plans" className="link" activeClassName="red" onClick={handleToggle} >Plan & Pricing</NavLink>
                                     </li>
                                 </Fade>
                             </Fade>

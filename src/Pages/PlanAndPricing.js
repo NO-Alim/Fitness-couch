@@ -4,7 +4,6 @@ import { useGlobalContext } from '../Context/context'
 import './PlanAndPricing.scss'
 
 const PlanAndPricing = () => {
-    window.scrollTo( 0 , 0);
     const {planList} = useGlobalContext();
     return (
         <>

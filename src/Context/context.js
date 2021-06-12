@@ -16,6 +16,9 @@ const AppProvider = ({ children }) => {
     const [sheduleId, setSheduleId] = useState(0);
     const [date, setDate] = useState(null);
     const [info, setInfo] = useState(false);
+    //for info
+    const [name , setName] = useState('');
+    const [email, setEmail] = useState('');
 
 
     const [aboutTop, setAboutTop] = useState({
@@ -31,7 +34,7 @@ const AppProvider = ({ children }) => {
         bottom: null
     })
     
-    return <AppContext.Provider value={{table,setTable,data, dataTwo, startDate, setStartDate, isClicked, SetIsClicked, warning, SetWarning, setSheduleId, sheduleId, active, setActive, setDate, date, info, setInfo, planList,serviceTop, setServiceTop,aboutTop, setAboutTop,contactTop, setContactTop}}>{children}</AppContext.Provider>
+    return <AppContext.Provider value={{table,setTable,data, dataTwo, startDate, setStartDate, isClicked, SetIsClicked, warning, SetWarning, setSheduleId, sheduleId, active, setActive, setDate, date, info, setInfo, planList,serviceTop, setServiceTop,aboutTop, setAboutTop,contactTop, setContactTop,name , setName, email, setEmail}}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {

@@ -3,15 +3,20 @@ import { deprecationHandler } from 'moment'
 import React, { useEffect, useRef, useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import {useGlobalContext} from '../Context/context'
+import './Info.scss'
+import {FaTimes} from 'react-icons/fa'
 
 
 const Info = () => {
-    window.scrollTo( 0 , 0);
-    const {table,startDate, isClicked, sheduleId,setInfo} = useGlobalContext();
+    const {table,startDate, isClicked, sheduleId,setInfo, name , setName, email, setEmail} = useGlobalContext();
     const [codeActive, setCodeActive] = useState(false)
     const [nextPage, setNextPage] = useState(false);
-    const [name , setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [nameValue, setNameValue] = useState('');
+    const [emailValue, setEmailValue] = useState('');
+
+    const [nameActive, setNameActive] = useState(true);
+    const [emailActive, setEmailActive] = useState(true);
+    const [warnignActive, setWarningActive] = useState(false);
     //const [phone, setPhone] = useState(0);
     //const [message, setMessage] = useState('');
     const nameRef = useRef(null)
@@ -29,54 +34,62 @@ const Info = () => {
 
     const submitHandle = (e) => {
         e.preventDefault();
-        console.log("form submited");
         //check email contains @gmail.com
         var filter = /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@[*[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+]*/
-        if (name === '') {
-            nameRef.current.style.borderColor = "red"
-            requiredName.current.style.display = "block"
-            warningRef.current.style.display = "block"
+        if (nameValue === '') {
             setNextPage(false)
         } else {
-            nameRef.current.style.borderColor = '#f1f1f1'
-            requiredName.current.style.display = "none"
-            warningRef.current.style.display = "none"
             setNextPage(true)
         }
 
-        if (filter.test(email)) {
-            emailRef.current.style.borderColor = '#f1f1f1'
-            requiredEmail.current.style.display = "none"
-            warningRef.current.style.display = "none"
+        if (filter.test(emailValue)) {
             setNextPage(true)
         } else {
-            emailRef.current.style.borderColor = 'red'
-            requiredEmail.current.style.display = "block"
-            warningRef.current.style.display = "block"
             setNextPage(false)
         }
+        console.log("submited. go next");
     }
 
-    const helloWorld = () => {
-        console.log("hello world");
+    const submitData = () => {
+        setName(nameValue);
+        setEmail(emailValue);
     }
 
     useEffect(() => {
         var filter = /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@[*[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+]*/
         const handleLink = () => {
-            if (name != '' && filter.test(email)) {
+            if (nameValue != '' && filter.test(emailValue)) {
                 setNextPage(true);
                 setInfo(true)
             } else {
                 setNextPage(false)
                 setInfo(false)
             }
+            //for display block and none
+            if (nameValue != '') {
+                setNameActive(false);
+            } else {
+                setNameActive(true);
+            }
+            if (filter.test(emailValue)) {
+                setEmailActive(false)
+            } else {
+                setEmailActive(true)
+            }
+            if (nameActive) {
+                setWarningActive(true);
+            } else if (emailActive) {
+                setWarningActive(true);
+                
+            } else {
+                setWarningActive(false)
+            }
         }
         handleLink();
         return () => {
             handleLink();
         }
-    },[name,email])
+    },[nameValue,emailValue])
     //if any one type www.xyz.com/info that mean there is no date selected. without data info page incomplete 
     //that's why if any one type url then he/she go back or redirect to bookonline page.
     if (!isClicked) {
@@ -95,11 +108,11 @@ const Info = () => {
                         <div className="from-container">
                             <form id="InfoForm" method="get" action="">
                                 <label htmlFor="Name">Name*</label>
-                                <input type="text" value={name} onChange={(e) => setName(e.target.value)} ref={nameRef}/>
-                                <span className="required-name required" ref={requiredName}>Name field must required</span>
+                                <input className={`${nameActive ? 'active': null}`} type="text" value={nameValue} onChange={(e) => setNameValue(e.target.value)} ref={nameRef}/>
+                                <span className={`required-name required ${nameActive ? 'active': null}`} ref={requiredName}>Name field must required</span>
                                 <label htmlFor="Email">Email*</label>
-                                <input type="email"  value={email} onChange={(e) => setEmail(e.target.value)} ref={emailRef} required />
-                                <span className="required-email required" ref={requiredEmail}>Email field must required</span>
+                                <input className={`${emailActive ? 'active': null}`} type="email"  value={emailValue} onChange={(e) => setEmailValue(e.target.value)} ref={emailRef} required />
+                                <span className={`required-email required ${emailActive ? 'active' : null}`} ref={requiredEmail}>Email field must required</span>
                                 <label htmlFor="Phone">Phone Number</label>
                                 <input type="number" />
                                 <label htmlFor="message">Add Your Message</label>
@@ -124,10 +137,10 @@ const Info = () => {
                                         <div>
                                             { nextPage ? 
                                             <Link to="/booked" className="Next-btn">
-                                                <button type="submit" form="InfoForm" onClick={helloWorld}>next</button>
-                                            </Link> : <button type="submit" form="InfoForm" onClick={submitHandle}>Next</button>}
+                                                <button type="submit" form="InfoForm" onClick={submitData}>next</button>
+                                            </Link> : <button type="submit" form="InfoForm" onClick={submitHandle} disabled>next</button>}
                                         </div>
-                                        <span className="warning" ref={warningRef}>Complete the required fields to continue</span>
+                                        <span className={`warning ${warnignActive ? 'active' : null}`} ref={warningRef}>Complete the required fields to continue</span>
                                     </div>
                                 )
                             })}
